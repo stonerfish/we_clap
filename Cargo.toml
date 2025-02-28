@@ -1,0 +1,26 @@
+[package]
+name = "we_clap"
+version = "0.1.0"
+authors = ["Jellybean Stonerfish <jellybean.stonerfish@gmail.com>"]
+edition = "2024"
+description = "Web Enabled Command Line Argument Parser"
+readme = "README.md"
+repository = "https://github.com/stonerfish/we_clap"
+license = "MIT OR Apache-2.0 OR GPL-2.0-or-later"
+keywords = ["cli", "clap", "wasm", "web", "command"]
+categories = [
+    "command-line-interface",
+    "game-development",
+    "gui",
+    "wasm",
+    "web-programming",
+]
+
+[dependencies]
+clap = { version = "4.5.30", features = ["derive"] }
+cliw = { version = "0.1.0" }
+
+[features]
+default = ["web-console"]
+web-alert = ["cliw/alert"] # output to a popup alert on web/wasm
+web-console = ["cliw/console"] # output to a popup alert on web/wasm
