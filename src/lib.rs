@@ -83,9 +83,7 @@
 //! [`console`]: https://developer.mozilla.org/en-US/docs/Web/API/console
 //! [`UrlArgs`]: https://docs.rs/cliw/latest/cliw/url_args/struct.UrlArgs.html
 
-// [`we_parse()`](crate::WeParser))
-
-use clap::{ArgMatches, Command, Parser, error};
+use clap::{error, ArgMatches, Command, Parser};
 
 #[cfg(target_arch = "wasm32")]
 use clap::error::ErrorKind;
