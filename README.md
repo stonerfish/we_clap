@@ -3,7 +3,8 @@
 ## we_clap
 Pronounced "We clap", as in "Give myself a round of applause."
 
-The goal is to be flexible, write your command line code once and it should be able to run anywhere!
+The goal is to be flexible, write your command line code once and it should be able
+to run anywhere!
 
 <a href="https://github.com/stonerfish/we_clap_examples/tree/master/we_clap_egui_demo"><figure><img alt="Screencast of an egui app running in web page with popup alerts showing a variety of clap help messages." src="https://github.com/stonerfish/cliw_examples/blob/master/we-clap_demos/we-clap_egui_demo/we-clap_egui_demo.gif?raw=true" width="50%"><figcaption>we_clap_egui_demo</figcaption></figure></a>
 
@@ -14,10 +15,11 @@ Find `we_clap` at [`crates.io`], or the [`we_clap repository`].
 Also check out the [`examples`] and [`docs`].
 
 ## Why not use we_clap?
-* If you are writing only for the web, you may not be wanting to use command line arguments.
+* If you are writing only for the web, you may not be wanting to use
+  command line arguments.
 * You might have another use of the url query string.
-* You might be compiling to wasm but the framework you use provides [`ArgsOs`]
-  and standard output.
+* You might be compiling to wasm but the framework you use provides
+  [`ArgsOs`] and standard output.
 * Your program doesn't need command line arguments
 * You don't like to use clap.  ( Check out [`cliw`] )
 
@@ -44,7 +46,8 @@ we_clap = { version = "0.1.1" , features = ["web-alert"] }
 use clap::Parser;
 use we_clap::WeParser; // Wrapper for clap Parser
 
-impl we_clap::WeParser for Opts {} // Implement web enabled parser for your struct
+// Implement web enabled parser for your struct
+impl we_clap::WeParser for Opts {}
 
 #[derive(Parser, Debug, Default)]
 #[command(author, version, about, long_about)]
@@ -59,14 +62,16 @@ pub struct Opts {
 }
 
 fn main() {
-    // Like magic, this will work on native parsing the command line arguments,
-    // or on the web parsing the url query string as if it were command line arguments,
-    // providing clap help and error messages to stdout/stderr on native or a popup alert on web/wasm.
+    // Like magic, this will work on native parsing the command line
+    // arguments, or on the web parsing the url query string as if it were
+    // command line arguments, providing clap help and error messages to
+    // stdout/stderr on native or a popup alert on web/wasm.
 
     // use web enabled parse and it works on native or web.
     let opts: Opts = Opts::we_parse();  // Type annotations needed
 
-    // this app doesn't do anything, except parse arguments and demonstrate clap powers in the web.
+    // this app doesn't do anything, except parse arguments and demonstrate
+    // clap powers in the web.
 }
 ```
 #### Running with wasm-server-runner.
@@ -82,13 +87,14 @@ cargo r --target wasm32-unknown-unknown
 
 ## How does we_clap do it?
 
-We_clap has two traits [`WeParser`] and [`WeCommand`] that wrap the [`clap::Parser`]
-trait and the [`clap::Command`] struct.  These traits have wrapper functions that you call to
-fill your derive struct or create your command, ie. [`we_parse()`] and [`we_get_matches()`].
-These wrappers get arguments from [`ArgsOs`] on native and [`UrlArgs`] on the web.  These functions
-handle error and help output like clap on native, on the web the error and help messages are
-to the [`console`] or popup [`alert`].  See the [`docs`] and [`examples`] to learn how easy
-it is to use.
+We_clap has two traits [`WeCommand`] and [`WeParser`] that wrap the
+the [`clap::Command`] struct and [`clap::Parser`] trait.  These traits have
+wrapper functions that you call to fill your derive struct or work with your
+command.  For example [`we_parse()`], [`we_get_matches()`].  These wrappers
+get arguments from [`ArgsOs`] on native and [`UrlArgs`] on the web.  They also
+handle error and help output like clap on native, on the web the error and
+help messages are to the [`console`] or popup [`alert`].
+See the [`docs`] and [`examples`] to learn how easy it is to use.
 
 ### What is UrlArgs
 
@@ -96,7 +102,7 @@ it is to use.
 
  * Zeroith arg is the url path.
  * The rest of the args, if any, are the full [`decoded`] query strings.\
-   The query strings start after the first '?' character and are delimited by '&'
+   The query strings start at first '?' character and are delimited by '&'
  * Anything after a hash '#' is discarded.
 
 ### UrlArgs Example
@@ -128,17 +134,19 @@ Copyright 2025 Richard Gould
 Licensed under either of
 
  * Apache License, Version 2.0
-   ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+   ([LICENSE-APACHE](LICENSE-APACHE) or
+   http://www.apache.org/licenses/LICENSE-2.0)
  * MIT license
-   ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+   ([LICENSE-MIT](LICENSE-MIT) or
+   http://opensource.org/licenses/MIT)
 
 at your option.
 
 ## Contribution
 
 Unless you explicitly state otherwise, any contribution intentionally submitted
-for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
-dual licensed as above, without any additional terms or conditions.
+for inclusion in the work by you, as defined in the Apache-2.0 license, shall
+be dual licensed as above, without any additional terms or conditions.
 
 [`alert`]: https://developer.mozilla.org/en-US/docs/Web/API/Window/alert
 [`ArgsOs`]: https://doc.rust-lang.org/std/env/struct.ArgsOs.html
@@ -154,7 +162,7 @@ dual licensed as above, without any additional terms or conditions.
 [`we_clap`]: https://github.com/stonerfish/clap/tree/we_clap
 [`we_clap_demo`]: https://github.com/stonerfish/we_clap_examples/tree/master/we_clap_demo
 [`we_clap repository`]: https://github.com/stonerfish/we_clap
-[`WeCommand`]: https://docs.rs/we_clap/latest/we_clap/struct.WeCommand.html
-[`we_get_matches()`]: https://docs.rs/we_clap/latest/we_clap/struct.WeCommand.html#method.we_get_matches
-[`we_parse()`]: https://docs.rs/we_clap/latest/we_clap/WeParse/fn.we_parse.html
+[`WeCommand`]: https://docs.rs/we_clap/latest/we_clap/trait.WeCommand.html
+[`we_get_matches()`]: https://docs.rs/we_clap/latest/we_clap/trait.WeCommand.html#method.we_get_matches
+[`we_parse()`]: https://docs.rs/we_clap/latest/we_clap/trait.WeParser.html#method.we_parse
 [`WeParser`]: https://docs.rs/we_clap/latest/we_clap/trait.WeParser.html

@@ -6,15 +6,17 @@
 //! # we_clap
 //! Pronounced "We clap", as in "Give yourself a round of applause."
 //!
-//! The goal is to be flexible, write your command line code once and it should be able to run
-//! anywhere!
+//! The goal is to be flexible, write your command line code once and it
+//! should be able to run anywhere!
 //!
-//! We_clap has two traits, [`WeCommand`] and [`WeParser`] that wrap the [`clap::Command`] struct
-//! and the [`clap::Parser`] traits.  These traits have wrapper functions that you call to
-//! fill your derive struct or create your command.  For example;[`WeCommand::we_get_matches()`]
-//! and [`WeParser::we_parse()`].  These wrappers get arguments from [`ArgsOs`] on native and
-//! [`UrlArgs`] on the web.  These functions handle error and help output like clap on native,
-//! on the web the error and help messages are to the [`console`] or popup [`alert`].
+//! We_clap has two traits, [`WeCommand`] and [`WeParser`] that wrap the
+//! [`clap::Command`] struct and the [`clap::Parser`] traits.  These traits
+//! have wrapper functions that you call to fill your derive struct or work
+//! with your command.  For example; [`WeCommand::we_get_matches()`]
+//! and [`WeParser::we_parse()`].  These wrappers get arguments from
+//! [`ArgsOs`] on native and [`UrlArgs`] on the web.  They also handle error
+//! and help output like clap on native, on the web the error and help
+//! messages are to the [`console`] or popup [`alert`].
 //!
 //! # We_clap Features
 //!
@@ -60,15 +62,17 @@
 //! }
 //!
 //! fn main() {
-//! // Like magic, using we_parse() will work on native parsing the command
-//! // line arguments or on the web parsing the url query string
-//! // as if it were command line arguments, providing clap help
-//! // and error messages to stdout/stderr on native or a popup alert on web/wasm.
+//! // Like magic, using we_parse() will work on native parsing
+//! // the command line arguments or on the web parsing the url query
+//! // string as if it were command line arguments, providing clap help
+//! // and error messages to stdout/stderr on native or a popup alert
+//! // on web/wasm.
 //!
 //!     // Type annotations needed
 //!     let opts: Opts = Opts::we_parse();
 //!
-//!     // this app doesn't do anything, except parse arguments and demonstrate clap powers in the web.
+//!     // this app doesn't do anything, except parse arguments and
+//!     // demonstrate clap powers in the web.
 //! }
 //! ```
 //!
@@ -105,8 +109,11 @@ use cliw::url_args::UrlArgs;
 /// use clap::Command; // Use clap to parse the arguments
 /// use we_clap::WeCommand; // Use we_clap to provide the arguments to clap.
 ///
+/// // Create your clap command.
 /// let mut cli = Command::new("Native and Web Program");
-/// let matches = &cli.we_get_matches(); // use WeCommand function instead of get_matches
+///
+/// // Use WeCommand function instead of get_matches.
+/// let matches = &cli.we_get_matches();
 /// ```
 pub trait WeCommand {
     /// # Wrapper for [`clap::Command::get_matches()`]
@@ -122,26 +129,28 @@ pub trait WeCommand {
     ///
     /// # Exit
     ///
-    /// This functon may call [`std::process::exit()`] after printing messages if
-    /// command line arguments are wrong or a help or version type argument is given.
-    /// This is normal clap behaviour.
+    /// This functon may call [`std::process::exit()`] after printing messages
+    /// if command line arguments are wrong or a help or version type argument
+    /// is given.  This is normal clap behaviour.
     ///
     /// # Example
     /// ``` rust
-    /// use clap::Command; // Use clap to parse the arguments
-    /// use we_clap::WeCommand; // Use we_clap to provide the arguments to clap.
+    /// use clap::Command; // Use clap to parse the arguments.
+    /// use we_clap::WeCommand; // Use we_clap to provide the arguments.
     ///
     /// let mut cli = Command::new("Native and Web Program");
     ///
-    /// // use WeCommand function instead of clap get_matches
-    /// let matches = &cli.we_get_matches(); // use WeCommand function instead of get_matches
+    /// // Use WeCommand function instead of clap get_matches
+    /// let matches = &cli.we_get_matches();
     /// ```
     #[must_use]
     fn we_get_matches(self) -> ArgMatches;
 
     /// # Wrapper for [`clap::Command::get_matches_mut()`]
     ///
-    /// Like [`we_get_matches`](crate::WeCommand::we_get_matches()) but doesn't consume the `Command`.
+    /// Like [`we_get_matches`](crate::WeCommand::we_get_matches()) but
+    /// doesn't consume the `Command`.
+    ///
     /// Gets command line arguments on native or the web.\
     /// Native args are from [`std::env::ArgsOs`].\
     /// Web args are from [`cliw::url_args::UrlArgs`].\
@@ -183,15 +192,15 @@ pub trait WeCommand {
     ///
     /// # Errors
     ///
-    /// If help or version type arguments are entered than [`clap::error`] will be returned
-    /// instead of [`clap::ArgMatches`].
+    /// If help or version type arguments are entered than [`clap::error`]
+    /// will be returned instead of [`clap::ArgMatches`].
     /// This is normal clap behaviour.
     ///
     /// # Example
     ///
     /// ``` rust
     /// use clap::Command; // Use clap to parse the arguments
-    /// use we_clap::WeCommand; // Use we_clap to provide the arguments to clap.
+    /// use we_clap::WeCommand; // Use we_clap to provide the arguments.
     ///
     /// let mut cli = Command::new("Native and Web Program");
     ///
@@ -209,9 +218,10 @@ pub trait WeCommand {
     /// Web output is to console or popup alert
     ///
     /// # Errors
-    /// On native a [`Result`] is returned from [`clap::Command::print_help()`]
-    /// This is normal clap behaviour.\
-    /// On the web ouput errors are ingnored.  Ok(()) is always returned
+    /// On native a [`Result`] is returned from
+    /// [`clap::Command::print_help()`].  This is normal clap behaviour.
+    ///
+    /// On the web ouput errors are ignored.  Ok(()) is always returned
     ///
     /// # Example
     /// ``` rust
@@ -231,14 +241,15 @@ pub trait WeCommand {
     /// Web output is to console or popup alert
     ///
     /// # Errors
-    /// On native the [`Result`] is returned from [`clap::Command::print_help()`]
-    /// This is normal clap behaviour.\
-    /// On the web ouput errors are ingnored.  Ok(()) is always returned
+    /// On native the [`Result`] is returned from
+    /// [`clap::Command::print_help()`].   This is normal clap behaviour.
+    ///
+    /// On the web ouput errors are ignored.  Ok(()) is always returned
     ///
     /// # Example
     /// ``` rust
     /// use clap::Command; // Use clap to parse the arguments
-    /// use we_clap::WeCommand; // Use we_clap to provide the arguments to clap.
+    /// use we_clap::WeCommand; // Use we_clap to provide the arguments.
     ///
     /// let mut cli = Command::new("Native and Web Program");
     ///
@@ -269,7 +280,7 @@ impl WeCommand for Command {
                             cliw::output::eprint(&msg);
                         }
                     }
-                    std::process::exit(0); // exit code does not matter on wasm
+                    std::process::exit(0); // Exit code meaningless on wasm.
                 }
             }
         }
@@ -294,7 +305,7 @@ impl WeCommand for Command {
                             cliw::output::eprint(&msg);
                         }
                     }
-                    std::process::exit(0); // exit code does not matter on wasm
+                    std::process::exit(0); // Exit code meaningless on wasm.
                 }
             }
         }
@@ -351,7 +362,7 @@ impl WeCommand for Command {
 /// # Example
 /// ``` rust
 /// use clap::Parser; // Use clap to parse the arguments
-/// use we_clap::WeParser; // Use we_clap to provide the arguments to clap.
+/// use we_clap::WeParser; // Use we_clap to provide the arguments.
 ///
 /// #[derive(Parser, Debug, Default)]
 /// #[command(author, version, about, long_about)]
@@ -360,8 +371,8 @@ impl WeCommand for Command {
 /// // Implement web enabled parser for your struct
 /// impl we_clap::WeParser for Opts {}
 ///
-/// // use we_parse and it works on native or web.
-/// // Type annotations needed
+/// // Use we_parse and it works on native or web.
+/// // Type annotations needed.
 /// let opts: Opts = Opts::we_parse();
 /// ```
 pub trait WeParser {
@@ -423,7 +434,7 @@ pub trait WeParser {
                         }
                     }
 
-                    std::process::exit(0); // exit code does not matter on wasm
+                    std::process::exit(0); // Exit code meaningless on wasm.
                 }
             }
         }
@@ -441,13 +452,13 @@ pub trait WeParser {
     ///
     /// # Errors
     ///
-    /// If help or version type arguments are entered than [`clap::error`] will be returned..
-    /// This is normal clap behaviour.
+    /// If help or version type arguments are entered than [`clap::error`]
+    /// will be returned.  This is normal clap behaviour.
     ///
     /// # Example
     /// ``` rust
     /// use clap::Parser; // Use clap to parse the arguments
-    /// use we_clap::WeParser; // Use we_clap to provide the arguments to clap.
+    /// use we_clap::WeParser; // Use we_clap to provide the arguments.
     ///
     /// #[derive(Parser, Debug, Default)]
     /// #[command(author, version, about, long_about)]
