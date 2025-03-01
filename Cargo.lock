@@ -267,7 +267,7 @@ dependencies = [
 
 [[package]]
 name = "we_clap"
-version = "0.1.0"
+version = "0.1.3"
 dependencies = [
  "clap",
  "cliw",

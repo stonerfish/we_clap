@@ -1,6 +1,6 @@
 [package]
 name = "we_clap"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Jellybean Stonerfish <jellybean.stonerfish@gmail.com>"]
 edition = "2024"
 description = "Web Enabled Command Line Argument Parser"
