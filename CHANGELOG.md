@@ -16,6 +16,6 @@ Comment fixes.
  * Wrappers for clap Parse trait and Command struct.
  * Provide output to popup alert or console on the web.
 
-[unreleased]: https://github.com/stonerfish/we_clap/compare/v0.1.2...HEAD
-[0.1.3]: https://github.com/stonerfish/we_clap/releases/tag/v0.1.2
+[unreleased]: https://github.com/stonerfish/we_clap/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/stonerfish/we_clap/releases/tag/v0.1.3
 [0.1.0]: https://github.com/stonerfish/we_clap/releases/tag/v0.1.0
