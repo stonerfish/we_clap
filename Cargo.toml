@@ -18,7 +18,7 @@ categories = [
 
 [dependencies]
 clap = { version = "4.5.30", features = ["derive"] }
-cliw = { version = "0.1.0" }
+cliw = { version = "0.1.0", features = ["urlargs"] }
 
 [features]
 default = ["web-console"]

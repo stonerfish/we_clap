@@ -23,7 +23,7 @@ Also check out the [`examples`] and [`docs`].
 * Your program doesn't need command line arguments
 * You don't like to use clap.  ( Check out [`cliw`] )
 
-## How to use we_clap? 
+## How to use we_clap?
 
 ### we_clap_demo
 
@@ -37,7 +37,7 @@ edition = "2021"
 [dependencies]
 # get clap powers
 clap = { version = "4.5.30", features = ["derive"] }
-# get web ability for clap 
+# get web ability for clap
 we_clap = { version = "0.1.1" , features = ["web-alert"] }
 ```
 
