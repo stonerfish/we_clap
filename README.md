@@ -159,7 +159,6 @@ be dual licensed as above, without any additional terms or conditions.
 [`docs`]: https://docs.rs/we_clap
 [`examples`]: https://github.com/stonerfish/we_clap_examples
 [`UrlArgs`]: https://docs.rs/cliw/latest/cliw/url_args/struct.UrlArgs.html
-[`we_clap`]: https://github.com/stonerfish/clap/tree/we_clap
 [`we_clap_demo`]: https://github.com/stonerfish/we_clap_examples/tree/master/we_clap_demo
 [`we_clap repository`]: https://github.com/stonerfish/we_clap
 [`WeCommand`]: https://docs.rs/we_clap/latest/we_clap/trait.WeCommand.html
