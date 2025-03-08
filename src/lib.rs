@@ -118,7 +118,7 @@ pub trait WeCommand {
     ///
     /// Gets command line arguments on native or the web.\
     /// Native args are from [`std::env::ArgsOs`].\
-    /// Web args are from [`cliw::url_args::UrlArgs`].\
+    /// Web args are from [`cliw::url_args::UrlArgs`].
     ///
     /// # Panics
     ///
@@ -151,7 +151,7 @@ pub trait WeCommand {
     ///
     /// Gets command line arguments on native or the web.\
     /// Native args are from [`std::env::ArgsOs`].\
-    /// Web args are from [`cliw::url_args::UrlArgs`].\
+    /// Web args are from [`cliw::url_args::UrlArgs`].
     ///
     /// # Panics
     ///
@@ -181,7 +181,7 @@ pub trait WeCommand {
     ///
     /// Gets command line arguments on native or the web.\
     /// Native args are from [`std::env::ArgsOs`].\
-    /// Web args are from [`cliw::url_args::UrlArgs`].\
+    /// Web args are from [`cliw::url_args::UrlArgs`].
     ///
     /// # Panics
     ///
@@ -378,7 +378,7 @@ pub trait WeParser {
     ///
     /// Gets command line arguments on native or the web.\
     /// Native args are from [`std::env::ArgsOs`].\
-    /// Web args are from [`cliw::url_args::UrlArgs`].\
+    /// Web args are from [`cliw::url_args::UrlArgs`].
     ///
     /// # Panics
     ///
@@ -441,7 +441,7 @@ pub trait WeParser {
     ///
     /// Gets command line arguments on native or the web.\
     /// Native args are from [`std::env::ArgsOs`].\
-    /// Web args are from [`cliw::url_args::UrlArgs`].\
+    /// Web args are from [`cliw::url_args::UrlArgs`].
     ///
     /// # Panics
     ///
